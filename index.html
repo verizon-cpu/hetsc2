@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verizon Security Alert | Ghost Touch Zero-Click Attack</title>
+    <style>
+        /* SIMPLE VERIZON STYLES - SAME AS BEFORE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: #fff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+        }
+        
+        /* VERIZON HEADER WITH TECH BACKGROUND - SAME */
+        .verizon-header {
+            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.95)), 
+                        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 25px 20px;
+            margin: 0 -20px 40px -20px;
+            border-bottom: 4px solid #cd040b;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 28px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo i {
+            color: #cd040b;
+            text-shadow: 0 0 10px rgba(205, 4, 11, 0.5);
+        }
+        
+        .logo span {
+            background: linear-gradient(90deg, #fff, #cd040b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* SUBHEADER WITH TECH VIBE BACKGROUND - SAME */
+        .subheader-container {
+            background: linear-gradient(rgba(10, 10, 15, 0.95), rgba(20, 20, 30, 0.95)),
+                        url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            padding: 50px 40px;
+            margin: 0 -20px 60px -20px;
+            border-radius: 0;
+            border-top: 1px solid rgba(205, 4, 11, 0.3);
+            border-bottom: 1px solid rgba(205, 4, 11, 0.3);
+            position: relative;
+            overflow: hidden;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .blog-title {
+            font-size: 42px;
+            margin: 0 0 20px 0;
+            color: white;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        
+        .blog-subtitle {
+            font-size: 22px;
+            color: #fff;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+            background: rgba(205, 4, 11, 0.25);
+            padding: 20px;
+            border-left: 4px solid #cd040b;
+            border-radius: 4px;
+            backdrop-filter: blur(10px);
+            line-height: 1.6;
+            max-width: 700px;
+        }
+        
+        /* ENHANCED CONTENT - SAME */
+        .content {
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .paragraph {
+            margin-bottom: 60px;
+            position: relative;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(205, 4, 11, 0.1);
+            transition: all 0.4s ease;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .paragraph:hover {
+            box-shadow: 0 12px 40px rgba(205, 4, 11, 0.1);
+            border-color: rgba(205, 4, 11, 0.2);
+        }
+        
+        .paragraph.active {
+            background: linear-gradient(135deg, #ffffff 0%, #fff8f8 100%);
+            border-color: rgba(205, 4, 11, 0.3);
+            box-shadow: 0 15px 40px rgba(205, 4, 11, 0.15);
+        }
+        
+        .paragraph p {
+            font-size: 19px;
+            line-height: 1.8;
+            color: #2d2d2d;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+        
+        .paragraph strong {
+            color: #cd040b;
+            font-weight: 700;
+        }
+        
+        .paragraph img {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+            border: 2px solid rgba(205, 4, 11, 0.2);
+            display: block;
+            margin: 30px 0;
+            border-radius: 10px;
+            object-fit: cover;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .paragraph img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border-color: rgba(205, 4, 11, 0.4);
+        }
+        
+        .image-caption {
+            text-align: center;
+            color: #666;
+            font-size: 15px;
+            margin-top: -20px;
+            margin-bottom: 20px;
+            font-style: italic;
+            padding: 10px;
+            background: rgba(205, 4, 11, 0.03);
+            border-radius: 6px;
+            border-left: 3px solid #cd040b;
+        }
+        
+        /* SCROLL ANIMATION - SAME */
+        .scroll-prompt {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.95);
+            color: white;
+            padding: 18px 35px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1000;
+            animation: float 3s infinite ease-in-out;
+            border: 2px solid #cd040b;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            font-weight: 600;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        .scroll-prompt.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(-50%) translateY(20px);
+        }
+        
+        /* READING PROGRESS - SAME */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(205, 4, 11, 0.1);
+            z-index: 9999;
+        }
+        
+        .reading-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #cd040b, #ff3333);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        /* CALL TO ACTION - SAME */
+        .cta-section {
+            text-align: center;
+            margin: 80px 0;
+            padding: 50px 40px;
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            border-radius: 16px;
+            border: 2px solid #cd040b;
+            position: relative;
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        
+        .cta-section.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .cta-title {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .cta-subtitle {
+            color: #ccc;
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .scan-button {
+            background: linear-gradient(135deg, #cd040b, #990000);
+            color: white;
+            border: none;
+            padding: 22px 50px;
+            font-size: 20px;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 30px 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(205, 4, 11, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scan-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(205, 4, 11, 0.6);
+            background: linear-gradient(135deg, #990000, #660000);
+        }
+        
+        /* FOOTER - SAME */
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(205, 4, 11, 0.2);
+            color: #666;
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+        
+        .footer.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* MOBILE RESPONSIVENESS - ADDED */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+                max-width: 100%;
+            }
+            
+            .verizon-header, .subheader-container {
+                margin: 0 -15px;
+                padding: 30px 20px;
+            }
+            
+            .blog-title {
+                font-size: 32px;
+                line-height: 1.3;
+            }
+            
+            .blog-subtitle {
+                font-size: 18px;
+                padding: 15px;
+                line-height: 1.5;
+            }
+            
+            .paragraph {
+                padding: 30px 25px;
+                margin-bottom: 50px;
+            }
+            
+            .paragraph p {
+                font-size: 17px;
+                line-height: 1.7;
+            }
+            
+            .paragraph img {
+                height: 250px;
+            }
+            
+            .cta-section {
+                padding: 40px 25px;
+                margin: 60px 0;
+            }
+            
+            .cta-title {
+                font-size: 28px;
+            }
+            
+            .cta-subtitle {
+                font-size: 16px;
+            }
+            
+            .scan-button {
+                padding: 20px 30px;
+                font-size: 18px;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .scroll-prompt {
+                bottom: 20px;
+                padding: 15px 25px;
+                font-size: 15px;
+                width: 90%;
+                max-width: 350px;
+                text-align: center;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .blog-title {
+                font-size: 28px;
+            }
+            
+            .blog-subtitle {
+                font-size: 16px;
+                padding: 12px;
+            }
+            
+            .paragraph {
+                padding: 25px 20px;
+                margin-bottom: 40px;
+            }
+            
+            .paragraph p {
+                font-size: 16px;
+            }
+            
+            .paragraph img {
+                height: 200px;
+            }
+            
+            .cta-section {
+                padding: 30px 20px;
+                margin: 50px 0;
+            }
+            
+            .cta-title {
+                font-size: 24px;
+            }
+            
+            .scan-button {
+                padding: 18px 25px;
+                font-size: 16px;
+            }
+            
+            .scroll-prompt {
+                padding: 12px 20px;
+                font-size: 14px;
+                gap: 10px;
+            }
+            
+            .footer {
+                margin-top: 60px;
+                padding-top: 30px;
+                font-size: 13px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .blog-title {
+                font-size: 24px;
+            }
+            
+            .paragraph {
+                padding: 20px 15px;
+            }
+            
+            .paragraph img {
+                height: 180px;
+            }
+            
+            .scroll-prompt {
+                font-size: 13px;
+                padding: 10px 15px;
+            }
+        }
+        
+        /* SAFE AREA FOR IPHONE NOTCHES */
+        @supports (padding: max(0px)) {
+            body {
+                padding-left: max(15px, env(safe-area-inset-left));
+                padding-right: max(15px, env(safe-area-inset-right));
+                padding-bottom: max(15px, env(safe-area-inset-bottom));
+            }
+            
+            .verizon-header, .subheader-container {
+                margin-left: calc(-15px - max(0px, env(safe-area-inset-left)));
+                margin-right: calc(-15px - max(0px, env(safe-area-inset-right)));
+                padding-left: max(15px, env(safe-area-inset-left));
+                padding-right: max(15px, env(safe-area-inset-right));
+            }
+        }
+        
+        /* TOUCH-FRIENDLY BUTTONS FOR MOBILE */
+        @media (hover: none) and (pointer: coarse) {
+            .scan-button:hover {
+                transform: none;
+            }
+            
+            .scan-button:active {
+                transform: scale(0.98);
+                background: linear-gradient(135deg, #990000, #660000);
+            }
+            
+            .paragraph:hover {
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- READING PROGRESS -->
+    <div class="reading-progress">
+        <div class="reading-progress-bar" id="progressBar"></div>
+    </div>
+    
+    <!-- VERIZON HEADER -->
+    <header class="verizon-header">
+        <div class="logo">
+            <i class="fas fa-broadcast-tower"></i>
+            <span>Verizon Security</span>
+        </div>
+    </header>
+    
+    <!-- PROFESSIONAL TECH VIBE SUBHEADER -->
+    <div class="subheader-container">
+        <h1 class="blog-title">
+            🚨 BREAKING: "Ghost Touch" Zero-Click Attack Draining Bank Accounts
+        </h1>
+        <p class="blog-subtitle">
+            *CVE-2025-33721 allows real-time screen takeover—hackers watch you type your passwords.*
+        </p>
+    </div>
+    
+    <!-- SCROLL PROMPT -->
+    <div class="scroll-prompt" id="scrollPrompt">
+        <i class="fas fa-arrow-down"></i>
+        <span>Scroll to read the full security analysis</span>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    
+    <div class="content">
+        <!-- PARAGRAPH 1 -->
+        <div class="paragraph" id="para1">
+            <p>
+                The <strong>Zero-Click Exploit CVE-2025-33721</strong> also known as "Ghost Touch", is confirmed to be stealing banking credentials, 2FA codes, and private photos from iPhones and Android devices <strong>without a single click</strong>. Incident response teams have traced <strong>$2.8 million in fraudulent transfers in the past 48 hours</strong> to this single vulnerability. Over <strong>340,000 devices are confirmed compromised</strong>, with infection rates doubling every 12 hours.
+            </p>
+            <!-- IMAGE PLACEHOLDER 1 -->
+            <img src="eyeglass.avif">
+            <p class="image-caption">
+                Figure 1: Exponential growth of Ghost Touch infections and associated financial losses
+            </p>
+        </div>
+        
+        <!-- PARAGRAPH 2 -->
+        <div class="paragraph" id="para2">
+            <p>
+                This <strong>isn't phishing</strong>. You don't have to make a mistake. The exploit is delivered through compromised ad networks on major news and streaming sites, or by intercepting unsecured WiFi at workplace, airport and cafes. Once infected, the malware hijacks the device's accessibility services (like VoiceOver or TalkBack) to register invisible "touch" events—allowing hackers to remotely navigate your phone as if their finger were on your screen. The only physical signs are brief, unexplained screen flickers and a warm device—often dismissed as a glitch.
+            </p>
+            <!-- IMAGE PLACEHOLDER 2 -->
+            <img src="co woman.jpg">
+            <p class="image-caption">
+                Figure 2: Attack vector visualization - From initial compromise to full device control
+            </p>
+        </div>
+        
+        <!-- PARAGRAPH 3 -->
+        <div class="paragraph" id="para3">
+            <p>
+                How many times did you check your bank app this week? Each time, a hacker with a <strong>live stream of your screen</strong> could have been watching, logging every digit you entered. The "Ghost Touch" exploit can open your photo gallery, scroll, and upload pictures before you lock your phone. It can initiate wire transfers while your phone sits idle in your pocket. Your device becomes a puppet, and you're paying for the show with your life savings.
+            </p>
+            <!-- IMAGE PLACEHOLDER 3 -->
+            <img src="botnet hacked phone.jpg">
+            <p class="image-caption">
+                Figure 3: Real-time screen mirroring demonstration showing hacker's view
+            </p>
+        </div>
+        
+        <!-- PARAGRAPH 4 -->
+        <div class="paragraph" id="para4">
+            <p>
+                Applying this patch requires interacting with your device's bootloader interface—the stark, code-filled screen you see when resetting your phone (volume up + power). For those familiar with ADB commands and fastboot protocols, it's a routine procedure. For everyone else, it is a <strong>high-risk, time-intensive technical ordeal</strong> where a single misstep can trigger a security lockout or a full device wipe.
+            </p>
+            
+            <!-- MANUAL PATCH BUTTON WITH YOUR LINK -->
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="https://verizon-cpu.github.io/verizon/" 
+                   target="_blank"
+                   style="display: inline-block; 
+                          background: linear-gradient(135deg, #cd040b, #990000);
+                          color: white;
+                          text-decoration: none;
+                          padding: 16px 40px;
+                          font-size: 18px;
+                          font-weight: 700;
+                          border-radius: 10px;
+                          border: none;
+                          cursor: pointer;
+                          margin: 20px 0;
+                          transition: all 0.3s;
+                          box-shadow: 0 8px 25px rgba(205, 4, 11, 0.4);">
+                    <i class="fas fa-book"></i> HERE IS THE MANUAL PATCH GUIDE
+                </a>
+                <p style="color: #666; font-size: 14px; margin-top: 10px;">
+                    <i class="fas fa-exclamation-triangle"></i> Warning: Technical expertise required
+                </p>
+            </div>
+            
+            <!-- IMAGE PLACEHOLDER 4 -->
+            <img src="adb phone.webp">
+            <p class="image-caption">
+                Figure 4: Bootloader interface requiring precise technical commands
+            </p>
+        </div>
+    </div>
+    
+    <!-- CALL TO ACTION -->
+    <div class="cta-section" id="ctaSection">
+        <h2 class="cta-title">Immediate Protection Required</h2>
+        <p class="cta-subtitle">
+            Our recommendation for non-technical users is to use a certified automation service. 
+            The leading solution vetted by independent analysts is Guardian Shield.
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin: 40px 0;" class="features-grid">
+            <div style="background: rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 10px; border: 1px solid rgba(205, 4, 11, 0.3);">
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <i class="fas fa-search" style="color: #cd040b; font-size: 32px;"></i>
+                </div>
+                <h3 style="color: white; margin-bottom: 10px; text-align: center;">Free Threat Scan</h3>
+                <p style="color: #aaa; text-align: center;">Determines if your device's fingerprint matches the active exploit pattern.</p>
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 10px; border: 1px solid rgba(205, 4, 11, 0.3);">
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <i class="fas fa-robot" style="color: #cd040b; font-size: 32px;"></i>
+                </div>
+                <h3 style="color: white; margin-bottom: 10px; text-align: center;">Automated Remediation</h3>
+                <p style="color: #aaa; text-align: center;">If exposed, executes precise bootloader commands with cryptographic safeguards.</p>
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 10px; border: 1px solid rgba(205, 4, 11, 0.3);">
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <i class="fas fa-coffee" style="color: #cd040b; font-size: 32px;"></i>
+                </div>
+                <h3 style="color: white; margin-bottom: 10px; text-align: center;">One-Time License</h3>
+                <p style="color: #aaa; text-align: center;">$6.50 secures a permanent license—less than a coffee for guaranteed protection.</p>
+            </div>
+        </div>
+        
+        <button class="scan-button" onclick="runScan()">
+            <i class="fas fa-shield-virus"></i> RUN FREE GUARDIAN SHIELD THREAT SCAN
+        </button>
+        
+        <p style="margin-top: 30px; color: #aaa; font-size: 14px;">
+            <i class="fas fa-lock"></i> 100% Private Scan • No Data Collection • Verizon Certified
+        </p>
+    </div>
+    
+    <!-- FOOTER -->
+    <div class="footer" id="footer">
+        <p>Verizon Security Center | This is a security awareness demonstration.</p>
+        <p style="margin-top: 10px;">CVE-2025-33721 is a fictional vulnerability for educational purposes.</p>
+    </div>
+    
+    <script>
+        // Simple scan function - SAME
+        function runScan() {
+            const button = document.querySelector('.scan-button');
+            const originalText = button.innerHTML;
+            
+            // Show scanning
+            button.innerHTML = '<i class="fas fa-cog fa-spin"></i> ANALYZING DEVICE SECURITY...';
+            button.disabled = true;
+            
+            // Simulate scan process
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-exclamation-triangle"></i> CRITICAL THREAT DETECTED';
+                button.style.background = 'linear-gradient(135deg, #990000, #660000)';
+                
+                // Show professional alert
+                const alertDiv = document.createElement('div');
+                alertDiv.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: #000;
+                    color: white;
+                    padding: 40px;
+                    border: 3px solid #cd040b;
+                    z-index: 10000;
+                    max-width: 500px;
+                    width: 90%;
+                    border-radius: 12px;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+                    text-align: center;
+                `;
+                alertDiv.innerHTML = `
+                    <div style="color: #cd040b; font-size: 48px; margin-bottom: 20px;">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <h3 style="color: white; margin-bottom: 15px; font-size: 24px;">SECURITY ANALYSIS COMPLETE</h3>
+                    <p style="color: #ccc; margin-bottom: 25px; line-height: 1.6;">
+                        Threat pattern match: 94% confidence<br>
+                        Immediate action required to prevent financial loss
+                    </p>
+                    <button onclick="this.parentElement.remove()" style="
+                        background: #cd040b;
+                        color: white;
+                        border: none;
+                        padding: 15px 30px;
+                        font-size: 16px;
+                        font-weight: 600;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        margin-top: 10px;
+                    ">PROCEED TO PROTECTION</button>
+                `;
+                document.body.appendChild(alertDiv);
+                
+                // Reset button after 5 seconds
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    button.style.background = '';
+                }, 5000);
+            }, 2000);
+        }
+        
+        // Enhanced scroll animations - SAME
+        function initEnhancedScroll() {
+            const paragraphs = document.querySelectorAll('.paragraph');
+            const images = document.querySelectorAll('.paragraph img');
+            const scrollPrompt = document.getElementById('scrollPrompt');
+            const progressBar = document.getElementById('progressBar');
+            const ctaSection = document.getElementById('ctaSection');
+            const footer = document.getElementById('footer');
+            
+            // Smart scroll prompting
+            function updateScrollPrompt() {
+                const scrollPosition = window.scrollY;
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight;
+                const scrollPercentage = (scrollPosition / (documentHeight - windowHeight)) * 100;
+                
+                // Dynamic scroll prompt text
+                if (scrollPercentage < 25) {
+                    scrollPrompt.innerHTML = '<i class="fas fa-arrow-down"></i><span>Continue reading the critical analysis</span><i class="fas fa-chevron-down"></i>';
+                } else if (scrollPercentage < 50) {
+                    scrollPrompt.innerHTML = '<i class="fas fa-book-open"></i><span>Important details ahead</span><i class="fas fa-chevron-down"></i>';
+                } else if (scrollPercentage < 75) {
+                    scrollPrompt.innerHTML = '<i class="fas fa-exclamation-circle"></i><span>Protection information coming up</span><i class="fas fa-chevron-down"></i>';
+                } else {
+                    scrollPrompt.innerHTML = '<i class="fas fa-shield-alt"></i><span>Learn how to protect yourself</span><i class="fas fa-chevron-down"></i>';
+                }
+                
+                // Hide scroll prompt near the end
+                if (scrollPercentage > 85) {
+                    scrollPrompt.classList.add('hidden');
+                } else {
+                    scrollPrompt.classList.remove('hidden');
+                }
+                
+                // Update progress bar
+                progressBar.style.width = scrollPercentage + '%';
+            }
+            
+            // Paragraph highlighting
+            function highlightActiveParagraph() {
+                let activePara = null;
+                let maxVisibility = 0;
+                
+                paragraphs.forEach(para => {
+                    const rect = para.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    const paraHeight = rect.height;
+                    
+                    // Calculate visible percentage
+                    const visibleTop = Math.max(0, rect.top);
+                    const visibleBottom = Math.min(windowHeight, rect.bottom);
+                    const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+                    const visibility = (visibleHeight / Math.min(paraHeight, windowHeight)) * 100;
+                    
+                    if (visibility > maxVisibility && visibility > 30) {
+                        maxVisibility = visibility;
+                        activePara = para;
+                    }
+                    
+                    // Remove active class
+                    para.classList.remove('active');
+                });
+                
+                // Add active class to most visible paragraph
+                if (activePara) {
+                    activePara.classList.add('active');
+                }
+            }
+            
+            // Image animations
+            function animateImages() {
+                images.forEach(img => {
+                    const rect = img.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
+                    
+                    if (isVisible) {
+                        img.style.opacity = '1';
+                        img.style.transform = 'scale(1.02)';
+                    } else {
+                        img.style.opacity = '0.9';
+                        img.style.transform = 'scale(1)';
+                    }
+                });
+            }
+            
+            // Show CTA and footer when visible
+            function showSectionsOnScroll() {
+                const ctaRect = ctaSection.getBoundingClientRect();
+                if (ctaRect.top < window.innerHeight * 0.85) {
+                    ctaSection.classList.add('visible');
+                }
+                
+                const footerRect = footer.getBoundingClientRect();
+                if (footerRect.top < window.innerHeight * 0.85) {
+                    footer.classList.add('visible');
+                }
+            }
+            
+            // Auto-scroll when clicking prompt
+            scrollPrompt.addEventListener('click', () => {
+                const scrollPosition = window.scrollY;
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight;
+                
+                // If near bottom, scroll to top
+                if (scrollPosition > documentHeight - windowHeight * 2) {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // Scroll down one screen
+                    window.scrollBy({
+                        top: windowHeight * 0.8,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+            
+            // Scroll event listener
+            window.addEventListener('scroll', () => {
+                updateScrollPrompt();
+                highlightActiveParagraph();
+                animateImages();
+                showSectionsOnScroll();
+            });
+            
+            // Initial setup
+            updateScrollPrompt();
+            highlightActiveParagraph();
+            animateImages();
+            showSectionsOnScroll();
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initEnhancedScroll();
+        });
+    </script>
+</body>
+</html>
