@@ -170,17 +170,51 @@
             border-color: rgba(205, 4, 11, 0.4);
         }
         
-        .image-caption {
+        /* PREMIUM SECURITY PROMPT - NEW REFINED VERSION */
+        .security-prompt {
+            background: linear-gradient(135deg, 
+                rgba(255, 50, 50, 0.08) 0%, 
+                rgba(255, 255, 255, 0.98) 100%);
+            border: 1px solid rgba(205, 4, 11, 0.15);
+            border-left: 4px solid #cd040b;
+            color: #222;
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            font-size: 16px;
             text-align: center;
-            color: #666;
-            font-size: 15px;
-            margin-top: -20px;
-            margin-bottom: 20px;
-            font-style: italic;
-            padding: 10px;
-            background: rgba(205, 4, 11, 0.03);
-            border-radius: 6px;
-            border-left: 3px solid #cd040b;
+            box-shadow: 0 5px 20px rgba(205, 4, 11, 0.08);
+            position: relative;
+            overflow: hidden;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+        
+        .security-prompt::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #cd040b, #ff6666, #cd040b);
+        }
+        
+        .security-prompt strong {
+            color: #cd040b;
+            font-weight: 700;
+            background: linear-gradient(135deg, #cd040b, #ff3333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .security-icon {
+            color: #cd040b;
+            font-size: 20px;
+            margin-right: 10px;
+            vertical-align: middle;
+            text-shadow: 0 2px 4px rgba(205, 4, 11, 0.2);
         }
         
         /* SCROLL ANIMATION - SAME */
@@ -352,6 +386,12 @@
                 height: 250px;
             }
             
+            .security-prompt {
+                padding: 18px 20px;
+                font-size: 15px;
+                margin: 20px 0;
+            }
+            
             .cta-section {
                 padding: 40px 25px;
                 margin: 60px 0;
@@ -413,6 +453,12 @@
                 height: 200px;
             }
             
+            .security-prompt {
+                padding: 16px 18px;
+                font-size: 14.5px;
+                letter-spacing: 0.2px;
+            }
+            
             .cta-section {
                 padding: 30px 20px;
                 margin: 50px 0;
@@ -451,6 +497,11 @@
             
             .paragraph img {
                 height: 180px;
+            }
+            
+            .security-prompt {
+                font-size: 14px;
+                padding: 14px 16px;
             }
             
             .scroll-prompt {
@@ -513,7 +564,7 @@
             🚨 BREAKING: "Ghost Touch" Zero-Click Attack Draining Bank Accounts
         </h1>
         <p class="blog-subtitle">
-            *CVE-2025-33721 allows real-time screen takeover—hackers watch you type your passwords.*
+            *"CVE-2025-33721 enables real-time screen takeover, allowing hackers to monitor password input."*
         </p>
     </div>
     
@@ -528,13 +579,15 @@
         <!-- PARAGRAPH 1 -->
         <div class="paragraph" id="para1">
             <p>
-                The <strong>Zero-Click Exploit CVE-2025-33721</strong> also known as "Ghost Touch", is confirmed to be stealing banking credentials, 2FA codes, and private photos from iPhones and Android devices <strong>without a single click</strong>. Incident response teams have traced <strong>$2.8 million in fraudulent transfers in the past 48 hours</strong> to this single vulnerability. Over <strong>340,000 devices are confirmed compromised</strong>, with infection rates doubling every 12 hours.
+                The <strong>Zero-Click Exploit CVE-2025-33721</strong> also known as "Ghost Touch" is confirmed to be stealing banking credentials, 2FA codes, and private photos from iPhones and Android devices <strong>without a single click</strong>. Incident response teams have traced <strong>$2.8 million in fraudulent transfers in the past 48 hours</strong> to this single vulnerability. Over <strong>340,000 devices are confirmed compromised</strong>, with infection rates doubling every 12 hours.
             </p>
             <!-- IMAGE PLACEHOLDER 1 -->
             <img src="eyeglass.avif">
-            <p class="image-caption">
-                Figure 1: Exponential growth of Ghost Touch infections and associated financial losses
-            </p>
+            <!-- REFINED PREMIUM SECURITY PROMPT -->
+            <div class="security-prompt">
+                <span class="security-icon">🔒</span>
+                <strong>Security Advisory:</strong> Continue reading for critical protection measures.
+            </div>
         </div>
         
         <!-- PARAGRAPH 2 -->
@@ -544,9 +597,11 @@
             </p>
             <!-- IMAGE PLACEHOLDER 2 -->
             <img src="co woman.jpg">
-            <p class="image-caption">
-                Figure 2: Attack vector visualization - From initial compromise to full device control
-            </p>
+            <!-- REFINED PREMIUM SECURITY PROMPT -->
+            <div class="security-prompt">
+                <span class="security-icon">⚠️</span>
+                <strong>Important:</strong> The following information is essential for your device's security.
+            </div>
         </div>
         
         <!-- PARAGRAPH 3 -->
@@ -556,9 +611,11 @@
             </p>
             <!-- IMAGE PLACEHOLDER 3 -->
             <img src="botnet hacked phone.jpg">
-            <p class="image-caption">
-                Figure 3: Real-time screen mirroring demonstration showing hacker's view
-            </p>
+            <!-- REFINED PREMIUM SECURITY PROMPT -->
+            <div class="security-prompt">
+                <span class="security-icon">🛡️</span>
+                <strong>Security Briefing:</strong> Read on for actionable protection solutions.
+            </div>
         </div>
         
         <!-- PARAGRAPH 4 -->
@@ -593,9 +650,11 @@
             
             <!-- IMAGE PLACEHOLDER 4 -->
             <img src="adb phone.webp">
-            <p class="image-caption">
-                Figure 4: Bootloader interface requiring precise technical commands
-            </p>
+            <!-- REFINED PREMIUM SECURITY PROMPT -->
+            <div class="security-prompt">
+                <span class="security-icon">🚨</span>
+                <strong>Critical Update:</strong> Final security recommendations ahead.
+            </div>
         </div>
     </div>
     
